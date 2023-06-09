@@ -41,14 +41,16 @@ export class MapsComponent implements OnInit {
       }
     );
   
-    const infoWindow = new google.maps.InfoWindow({
+    const infoWindowOption: google.maps.InfoWindowOptions = {
       content: "",
       disableAutoPan: true,
-    });
+    }
+
+    const infoWindow = new google.maps.InfoWindow(infoWindowOption);
   
     const image = {
       url: "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png",
-      // This marker is 20 pixels wide by 32 pixels high.
+      // This marker is 32 pixels wide by 32 pixels high.
       size: new google.maps.Size(32, 32),
       // The origin for this image is (0, 0).
       origin: new google.maps.Point(0, 0),
@@ -77,7 +79,7 @@ export class MapsComponent implements OnInit {
       // markers can only be keyboard focusable when they have click listeners
       // open info window when marker is clicked
       marker.addListener("click", () => {
-        console.log('bateu aqui')
+        console.log('click')
         infoWindow.setContent(label);
         infoWindow.open(map, marker);
       });
